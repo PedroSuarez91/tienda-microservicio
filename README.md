@@ -1,3 +1,21 @@
+# Registrar tienda
+post http://localhost:8083/api/tiendas
+
+{
+  "nombre": "EcoMarket Concepción",
+  "ubicacion": "Av. Los Carrera 1234, Concepción",
+  "nominaEmpleados": [
+    "Pedro Suárez",
+    "Nicolás Castillo",
+],
+  "normas": [
+    "Mantener orden en bodega",
+    "Registrar ingreso y salida de productos",
+    "Usar uniforme"
+  ],
+  "horarioTienda": "Lunes a Viernes de 09:00 a 18:00"
+}
+
 # application.properties
 
 spring.application.name=tienda-microservicio
