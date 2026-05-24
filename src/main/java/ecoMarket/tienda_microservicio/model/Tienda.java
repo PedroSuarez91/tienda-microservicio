@@ -1,10 +1,24 @@
 package ecoMarket.tienda_microservicio.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Table(name = "tiendas")
 public class Tienda {
 
     @Id
@@ -36,63 +50,5 @@ public class Tienda {
     @Column(nullable = false)
     private String horarioTienda;
 
-    public Tienda() {
-    }
-
-    public Tienda(Long id, String nombre, String ubicacion, List<String> nominaEmpleados, List<String> normas, String horarioTienda) {
-        this.id = id;
-        this.nombre = nombre;
-        this.ubicacion = ubicacion;
-        this.nominaEmpleados = nominaEmpleados;
-        this.normas = normas;
-        this.horarioTienda = horarioTienda;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getUbicacion() {
-        return ubicacion;
-    }
-
-    public List<String> getNominaEmpleados() {
-        return nominaEmpleados;
-    }
-
-    public List<String> getNormas() {
-        return normas;
-    }
-
-    public String getHorarioTienda() {
-        return horarioTienda;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
-    public void setNominaEmpleados(List<String> nominaEmpleados) {
-        this.nominaEmpleados = nominaEmpleados;
-    }
-
-    public void setNormas(List<String> normas) {
-        this.normas = normas;
-    }
-
-    public void setHorarioTienda(String horarioTienda) {
-        this.horarioTienda = horarioTienda;
-    }
+    
 }
