@@ -1,4 +1,4 @@
-application.properties
+# application.properties
 
 spring.application.name=tienda-microservicio
 
