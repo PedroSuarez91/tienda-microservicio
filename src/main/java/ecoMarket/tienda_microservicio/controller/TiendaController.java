@@ -37,4 +37,9 @@ public class TiendaController {
     public List<Tienda> listarTiendas() {
         return tiendaService.listarTiendas();
     }
+
+    @PostMapping
+    public Tienda crearTienda(@RequestBody Tienda tienda) {
+        return tiendaService.crearTienda(tienda);
+    }
 }

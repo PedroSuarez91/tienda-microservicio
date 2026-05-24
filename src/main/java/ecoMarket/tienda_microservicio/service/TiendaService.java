@@ -57,6 +57,10 @@ public class TiendaService {
         return new ArrayList<>();
     }
 
+    public Tienda crearTienda(Tienda tienda) {
+    return tiendaRepository.save(tienda);
+    }
+    
     public List<Tienda> listarTiendas() {
         return tiendaRepository.findAll();
     }
