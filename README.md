@@ -7,7 +7,8 @@ post http://localhost:8083/api/tiendas
   "nominaEmpleados": [
     "Pedro Suárez",
     "Nicolás Castillo",
-],
+    "Benjamin Carrillo"
+  ],
   "normas": [
     "Mantener orden en bodega",
     "Registrar ingreso y salida de productos",
