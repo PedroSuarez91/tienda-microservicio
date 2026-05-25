@@ -15,6 +15,9 @@ POST http://localhost:8083/api/v1/tiendas
 # Agregar empleados
 PUT http://localhost:8083/api/v1/tiendas/"IDTIENDA"/empleados/"IDEMPLEADO"
 
+# Eliminar empleados
+DELETE http://localhost:8083/api/v1/tiendas/"IDTIENDA"/empleados/"IDEMPLEADO"
+
 
 
 # application.properties
