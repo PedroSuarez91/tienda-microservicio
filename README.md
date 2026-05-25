@@ -3,18 +3,13 @@ post http://localhost:8083/api/tiendas
 
 {
   "nombre": "EcoMarket Concepción",
-  "ubicacion": "Av. Los Carrera 1234, Concepción",
-  "nominaEmpleados": [
-    "Pedro Suárez",
-    "Nicolás Castillo",
-    "Benjamin Carrillo"
-  ],
+  "ubicacion": "Concepción Centro",
+  "horarioTienda": "Lunes a Viernes 09:00 - 18:00",
+  "nominaEmpleados": [],
   "normas": [
-    "Mantener orden en bodega",
-    "Registrar ingreso y salida de productos",
-    "Usar uniforme"
-  ],
-  "horarioTienda": "Lunes a Viernes de 09:00 a 18:00"
+    "Mantener la tienda limpia",
+    "Atender bien a los clientes"
+  ]
 }
 
 # application.properties
