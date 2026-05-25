@@ -1,5 +1,5 @@
 # Registrar tienda
-POST http://localhost:8083/api/tiendas
+POST http://localhost:8083/api/v1/tiendas
 
 {
   "nombre": "Tienda EcoMarket Centro",
