@@ -5,7 +5,7 @@ post http://localhost:8083/api/tiendas
   "nombre": "EcoMarket Concepción",
   "ubicacion": "Concepción Centro",
   "horarioTienda": "Lunes a Viernes 09:00 - 18:00",
-  "nominaEmpleados": [],
+  "nominaEmpleados": ["Pedro"],
   "normas": [
     "Mantener la tienda limpia",
     "Atender bien a los clientes"
