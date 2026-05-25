@@ -1,16 +1,15 @@
 package ecoMarket.tienda_microservicio.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import ecoMarket.tienda_microservicio.model.EmpleadoDTO;
 import ecoMarket.tienda_microservicio.model.Tienda;
 import ecoMarket.tienda_microservicio.repository.TiendaRepository;
-
-
-import java.util.ArrayList;
-
 
 @Service
 public class TiendaService {
@@ -18,24 +17,8 @@ public class TiendaService {
     @Autowired
     private TiendaRepository tiendaRepository;
 
-    public Tienda asignarHorarioEmpleado(Long idTienda, String empleado, String horario) {
-        Tienda tienda = tiendaRepository.findById(idTienda).orElse(null);
-
-        if (tienda != null) {
-            List<String> empleados = tienda.getNominaEmpleados();
-
-            if (empleados == null) {
-                empleados = new ArrayList<>();
-            }
-
-            empleados.add(empleado + " - " + horario);
-            tienda.setNominaEmpleados(empleados);
-
-            return tiendaRepository.save(tienda);
-        }
-
-        return null;
-    }
+    @Autowired
+    private RestTemplate restTemplate;
 
     public List<String> listarNormas(Long idTienda) {
         Tienda tienda = tiendaRepository.findById(idTienda).orElse(null);
@@ -47,38 +30,41 @@ public class TiendaService {
         return new ArrayList<>();
     }
 
-    public List<String> listarEmpleados(Long idTienda) {
-        Tienda tienda = tiendaRepository.findById(idTienda).orElse(null);
+    public Tienda crearTienda(Tienda tienda) {
 
-        if (tienda != null) {
-            return tienda.getNominaEmpleados();
+        if (tienda.getNormas() == null) {
+            tienda.setNormas(new ArrayList<>());
         }
 
-        return new ArrayList<>();
+        if (tienda.getListaEmpleados() == null) {
+            tienda.setListaEmpleados(new ArrayList<>());
+        }
+
+        return tiendaRepository.save(tienda);
     }
 
-    public Tienda crearTienda(Tienda tienda) {
-    return tiendaRepository.save(tienda);
-    }
-    
     public List<Tienda> listarTiendas() {
         return tiendaRepository.findAll();
     }
-    public Tienda modificarTienda(Long idTienda, Tienda tiendaActualizada) {
 
-    Tienda tiendaExistente = tiendaRepository.findById(idTienda).orElse(null);
+    public Tienda agregarEmpleado(Long idTienda, Long idEmpleado) {
+        Tienda tienda = tiendaRepository.findById(idTienda).orElse(null);
 
-    if (tiendaExistente != null) {
+        if (tienda != null) {
+            String url = "http://localhost:8100/api/v1/empleados/" + idEmpleado;
+            EmpleadoDTO empleado = restTemplate.getForObject(url, EmpleadoDTO.class);
 
-        tiendaExistente.setNombre(tiendaActualizada.getNombre());
-        tiendaExistente.setUbicacion(tiendaActualizada.getUbicacion());
-        tiendaExistente.setNominaEmpleados(tiendaActualizada.getNominaEmpleados());
-        tiendaExistente.setNormas(tiendaActualizada.getNormas());
-        tiendaExistente.setHorarioTienda(tiendaActualizada.getHorarioTienda());
+            if (empleado != null) {
 
-        return tiendaRepository.save(tiendaExistente);
+                if (tienda.getListaEmpleados() == null) {
+                    tienda.setListaEmpleados(new ArrayList<>());
+                }
+
+                tienda.getListaEmpleados().add(idEmpleado);
+                return tiendaRepository.save(tienda);
+            }
         }
 
-    return null;
+        return null;
     }
 }
