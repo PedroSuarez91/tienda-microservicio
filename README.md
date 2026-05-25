@@ -12,6 +12,13 @@ POST http://localhost:8083/api/v1/tiendas
   "listaEmpleados": []
 }
 
+# Modificar tienda
+PUT http://localhost:8083/api/v1/tiendas/"IDTIENDA"
+
+{
+  "nombre": "Nueva Tienda EcoMarket"
+}
+
 # Agregar empleados
 PUT http://localhost:8083/api/v1/tiendas/"IDTIENDA"/empleados/"IDEMPLEADO"
 
