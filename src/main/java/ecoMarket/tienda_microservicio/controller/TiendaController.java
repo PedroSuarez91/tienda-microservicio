@@ -61,4 +61,18 @@ public class TiendaController {
         return new ResponseEntity<>(tienda, HttpStatus.OK);
     }
 
+    @PutMapping("/{idTienda}")
+    public ResponseEntity<Tienda> modificarTienda(
+            @PathVariable Long idTienda,
+            @RequestBody Tienda tiendaActualizada) {
+
+        Tienda tienda = tiendaService.modificarTienda(idTienda, tiendaActualizada);
+
+        if (tienda == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(tienda, HttpStatus.OK);
+    }
+
 }

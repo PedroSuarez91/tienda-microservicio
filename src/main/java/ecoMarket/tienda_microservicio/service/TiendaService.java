@@ -87,4 +87,34 @@ public class TiendaService {
 
         return tiendaRepository.save(tienda);
     }
+
+    public Tienda modificarTienda(Long idTienda, Tienda tiendaActualizada) {
+        Tienda tienda = tiendaRepository.findById(idTienda).orElse(null);
+
+        if (tienda == null) {
+            return null;
+        }
+
+        if (tiendaActualizada.getNombre() != null) {
+            tienda.setNombre(tiendaActualizada.getNombre());
+        }
+
+        if (tiendaActualizada.getUbicacion() != null) {
+            tienda.setUbicacion(tiendaActualizada.getUbicacion());
+        }
+
+        if (tiendaActualizada.getNormas() != null) {
+            tienda.setNormas(tiendaActualizada.getNormas());
+        }
+
+        if (tiendaActualizada.getHorarioTienda() != null) {
+            tienda.setHorarioTienda(tiendaActualizada.getHorarioTienda());
+        }
+
+        if (tiendaActualizada.getListaEmpleados() != null) {
+            tienda.setListaEmpleados(tiendaActualizada.getListaEmpleados());
+        }
+
+        return tiendaRepository.save(tienda);
+    }
 }
