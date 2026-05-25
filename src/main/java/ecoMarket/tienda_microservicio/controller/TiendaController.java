@@ -42,4 +42,11 @@ public class TiendaController {
     public Tienda crearTienda(@RequestBody Tienda tienda) {
         return tiendaService.crearTienda(tienda);
     }
+    @PutMapping("/{idTienda}")
+    public Tienda modificarTienda(
+        @PathVariable Long idTienda,
+        @RequestBody Tienda tiendaActualizada
+    ) {
+    return tiendaService.modificarTienda(idTienda, tiendaActualizada);
+    }
 }
