@@ -67,4 +67,24 @@ public class TiendaService {
 
         return null;
     }
+
+    public Tienda eliminarEmpleado(Long idTienda, Long idEmpleado) {
+        Tienda tienda = tiendaRepository.findById(idTienda).orElse(null);
+
+        if (tienda == null) {
+            return null;
+        }
+
+        if (tienda.getListaEmpleados() == null || tienda.getListaEmpleados().isEmpty()) {
+            return null;
+        }
+
+        boolean eliminado = tienda.getListaEmpleados().remove(idEmpleado);
+
+        if (!eliminado) {
+            return null;
+        }
+
+        return tiendaRepository.save(tienda);
+    }
 }

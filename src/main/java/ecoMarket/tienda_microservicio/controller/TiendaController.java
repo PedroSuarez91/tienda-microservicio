@@ -3,7 +3,6 @@ package ecoMarket.tienda_microservicio.controller;
 import ecoMarket.tienda_microservicio.model.Tienda;
 import ecoMarket.tienda_microservicio.service.TiendaService;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +45,20 @@ public class TiendaController {
 
         return new ResponseEntity<>(tienda, HttpStatus.OK);
 
+    }
+
+    @DeleteMapping("/{idTienda}/empleados/{idEmpleado}")
+    public ResponseEntity<Tienda> eliminarEmpleado(
+            @PathVariable Long idTienda,
+            @PathVariable Long idEmpleado) {
+
+        Tienda tienda = tiendaService.eliminarEmpleado(idTienda, idEmpleado);
+
+        if (tienda == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(tienda, HttpStatus.OK);
     }
 
 }
