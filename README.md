@@ -12,6 +12,9 @@ post http://localhost:8083/api/tiendas
   ]
 }
 
+# Modificar tienda
+PUT http://localhost:8083/api/tiendas/"IDTIENDA"
+
 # application.properties
 
 spring.application.name=tienda-microservicio
