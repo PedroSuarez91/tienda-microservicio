@@ -1,19 +1,10 @@
 # Registrar tienda
-post http://localhost:8083/api/tiendas
+POST http://localhost:8083/api/tiendas
 
-{
-  "nombre": "EcoMarket Concepción",
-  "ubicacion": "Concepción Centro",
-  "horarioTienda": "Lunes a Viernes 09:00 - 18:00",
-  "nominaEmpleados": [],
-  "normas": [
-    "Mantener la tienda limpia",
-    "Atender bien a los clientes"
-  ]
-}
+# Agregar empleados
+PUT http://localhost:8083/api/v1/tiendas/"IDTIENDA"/empleados/"IDEMPLEADO"
 
-# Modificar tienda
-PUT http://localhost:8083/api/tiendas/"IDTIENDA"
+
 
 # application.properties
 
