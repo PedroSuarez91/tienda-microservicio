@@ -1,6 +1,17 @@
 # Registrar tienda
 POST http://localhost:8083/api/tiendas
 
+{
+  "nombre": "Tienda EcoMarket Centro",
+  "ubicacion": "Concepción",
+  "normas": [
+    "Mantener limpieza del local",
+    "Atender cordialmente a los clientes"
+  ],
+  "horarioTienda": "Lunes a viernes de 09:00 a 18:00",
+  "listaEmpleados": []
+}
+
 # Agregar empleados
 PUT http://localhost:8083/api/v1/tiendas/"IDTIENDA"/empleados/"IDEMPLEADO"
 
