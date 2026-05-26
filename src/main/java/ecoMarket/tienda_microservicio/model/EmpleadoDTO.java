@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class EmpleadoDTO {
-    private Long id;
+    private Long id_empleado;
 }
